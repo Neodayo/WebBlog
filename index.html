@@ -53,9 +53,7 @@
     }
   </script>
 
-  <!-- Only truly non-Tailwind things live here -->
   <style>
-    /* noise texture overlay */
     body::before {
       content: '';
       position: fixed;
@@ -65,7 +63,6 @@
       z-index: 0;
       opacity: 0.6;
     }
-    /* hero bg grid with radial mask — no Tailwind equivalent */
     .hero-grid {
       position: absolute;
       inset: 0;
@@ -76,14 +73,12 @@
       -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 100%);
       mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 100%);
     }
-    /* gallery first-child spanning 2 cols — Tailwind col-span needs grid-cols-3 context */
     .gallery-grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.75rem; }
     .gallery-grid-3 .img-slot:first-child { grid-column: span 2; }
     .gallery-grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 0.75rem; }
     @media(max-width:640px) {
       .gallery-grid-3 { grid-template-columns: repeat(2,1fr); }
     }
-    /* timeline vertical connector */
     .day-entry { position: relative; }
     .day-entry:not(:last-child)::before {
       content: '';
@@ -97,7 +92,6 @@
     @media(min-width:640px) {
       .day-entry:not(:last-child)::before { left: 70px; }
     }
-    /* image zoom on hover */
     .img-slot img { transition: transform 0.5s cubic-bezier(0.23,1,0.32,1); }
     .img-slot:hover img { transform: scale(1.05); }
     .img-slot:hover .img-caption { opacity: 1; }
@@ -136,14 +130,10 @@
   <!-- HERO -->
   <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero-grad">
     <div class="hero-grid"></div>
-
-    <!-- orbs -->
     <div class="absolute w-[600px] h-[600px] rounded-full -top-24 -left-24 animate-orb-float pointer-events-none"
          style="background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);"></div>
     <div class="absolute w-[500px] h-[500px] rounded-full -bottom-20 -right-20 animate-orb-float-r pointer-events-none"
          style="background: radial-gradient(circle, rgba(124,58,237,0.07) 0%, transparent 70%);"></div>
-
-    <!-- content -->
     <div class="relative z-10 text-center px-8 max-w-4xl">
       <div id="hero-badge"
            class="inline-flex items-center gap-2 text-[0.72rem] font-medium tracking-[0.12em] uppercase
@@ -152,18 +142,15 @@
         <span class="w-1.5 h-1.5 rounded-full bg-cyan shadow-[0_0_8px_#00e5ff] animate-pulse-dot"></span>
         IT Educational Tour 2025
       </div>
-
       <h1 id="hero-title"
           class="font-syne font-extrabold leading-none tracking-tight opacity-0 translate-y-8"
           style="font-size: clamp(3rem,8vw,6.5rem);">
         Company<br><span class="text-cyan">Immersion</span><br>Tour
       </h1>
-
       <p id="hero-sub"
          class="mt-6 text-lg text-slate-400 font-light leading-relaxed max-w-xl mx-auto opacity-0 translate-y-5">
         A week-long journey through Manila's leading tech companies — discovering the real world of IT, innovation, and industry.
       </p>
-
       <div id="hero-stats" class="flex gap-12 justify-center mt-12 opacity-0 translate-y-5">
         <div class="text-center">
           <div class="font-syne font-extrabold text-3xl">6<span class="text-cyan">+</span></div>
@@ -179,8 +166,6 @@
         </div>
       </div>
     </div>
-
-    <!-- scroll indicator -->
     <div id="hero-scroll"
          class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2
                 text-slate-500 text-[0.7rem] tracking-[0.1em] uppercase opacity-0">
@@ -193,7 +178,6 @@
   <!-- TIMELINE SECTION -->
   <section class="relative px-4 sm:px-8 py-32 max-w-5xl mx-auto">
 
-    <!-- section header -->
     <div class="text-center mb-20">
       <div class="text-[0.72rem] font-medium tracking-[0.15em] uppercase text-cyan mb-4">Weekly Log</div>
       <h2 class="font-syne font-extrabold tracking-tight" style="font-size: clamp(2rem,5vw,3.5rem);">
@@ -203,22 +187,16 @@
 
     <!-- ══ DAY 1 ══ -->
     <div class="day-entry grid gap-0 mb-12 opacity-0 translate-y-10" id="day1"
-         style="grid-template-columns: 60px 1fr; sm:grid-template-columns: 140px 1fr;">
-
-      <!-- marker -->
+         style="grid-template-columns: 60px 1fr;">
       <div class="flex flex-col items-center pt-4">
-        <div class="day-num w-11 h-11 sm:w-[52px] sm:h-[52px] rounded-full bg-card border border-white/15
+        <div class="w-11 h-11 sm:w-[52px] sm:h-[52px] rounded-full bg-card border border-white/15
                     flex items-center justify-center font-syne font-extrabold text-sm text-slate-100
-                    relative z-10 transition-all duration-300 group-hover:border-cyan">01</div>
+                    relative z-10 transition-all duration-300">01</div>
         <div class="text-[0.62rem] tracking-widest uppercase text-slate-600 mt-2 text-center">Day 1</div>
       </div>
-
-      <!-- card -->
       <div class="day-card bg-card border border-white/[0.07] rounded-2xl overflow-hidden
                   transition-all duration-[400ms] ease-out cursor-pointer
                   hover:-translate-y-1 hover:border-white/15 hover:shadow-[0_24px_60px_rgba(0,0,0,0.4)]">
-
-        <!-- header -->
         <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3
                     px-5 sm:px-8 pt-7 pb-6 border-b border-white/[0.07]">
           <div>
@@ -228,8 +206,6 @@
           <span class="self-start text-[0.65rem] font-semibold tracking-widest uppercase px-3 py-1.5 rounded-full whitespace-nowrap
                        text-amber bg-amber/10 border border-amber/20">Cultural Explore</span>
         </div>
-
-        <!-- companies -->
         <div class="flex flex-wrap gap-3 px-5 sm:px-8 py-4 border-b border-white/[0.07]">
           <div class="flex items-center gap-2 bg-white/[0.03] border border-white/[0.07] rounded-lg px-3 py-2 hover:bg-white/[0.06] hover:border-white/15 transition-all">
             <div class="w-6 h-6 rounded flex items-center justify-center text-xs flex-shrink-0 bg-gradient-to-br from-violet to-cyan">🏛️</div>
@@ -240,30 +216,30 @@
             <span class="text-[0.8rem] font-medium text-slate-100">Intramuros</span>
           </div>
         </div>
-
-        <!-- gallery -->
         <div class="px-5 sm:px-8 py-6">
-          <div class="text-[0.68rem] tracking-widest uppercase text-slate-600 mb-4">📸 Photo Gallery — Replace placeholders with your images</div>
+          <div class="text-[0.68rem] tracking-widest uppercase text-slate-600 mb-4">📸 Photo Gallery</div>
           <div class="gallery-grid-3">
-            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-dashed border-white/10 aspect-[16/10] flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/[0.03]" onclick="openLightbox(this)">
-              <div class="text-2xl opacity-20">🖼️</div>
-              <div class="text-[0.7rem] text-slate-600 tracking-wide text-center px-4">Add photo · Rizal Park</div>
+
+            <!-- SLOT 1-A · change src="rizal-park.jpg" to your actual filename -->
+            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] cursor-pointer transition-all duration-300" onclick="openLightbox(this)">
+              <img src="rizal-park.jpg" alt="Rizal Park" class="absolute inset-0 w-full h-full object-cover" />
               <div class="img-caption absolute bottom-0 left-0 right-0 px-3 py-2 text-[0.7rem] text-white/70 opacity-0 transition-opacity duration-200" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">Rizal Park</div>
             </div>
-            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-dashed border-white/10 aspect-[16/10] flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/[0.03]" onclick="openLightbox(this)">
-              <div class="text-2xl opacity-20">🖼️</div>
-              <div class="text-[0.7rem] text-slate-600 tracking-wide text-center px-4">Add photo · Intramuros</div>
+
+            <!-- SLOT 1-B · change src="intramuros-walls.jpg" to your actual filename -->
+            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] cursor-pointer transition-all duration-300" onclick="openLightbox(this)">
+              <img src="intramuros-walls.jpg" alt="Intramuros Walls" class="absolute inset-0 w-full h-full object-cover" />
               <div class="img-caption absolute bottom-0 left-0 right-0 px-3 py-2 text-[0.7rem] text-white/70 opacity-0 transition-opacity duration-200" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">Intramuros Walls</div>
             </div>
-            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-dashed border-white/10 aspect-[16/10] flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/[0.03]" onclick="openLightbox(this)">
-              <div class="text-2xl opacity-20">🖼️</div>
-              <div class="text-[0.7rem] text-slate-600 tracking-wide text-center px-4">Add group photo</div>
+
+            <!-- SLOT 1-C · change src="group-photo-day1.jpg" to your actual filename -->
+            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] cursor-pointer transition-all duration-300" onclick="openLightbox(this)">
+              <img src="group-photo-day1.jpg" alt="Group Photo" class="absolute inset-0 w-full h-full object-cover" />
               <div class="img-caption absolute bottom-0 left-0 right-0 px-3 py-2 text-[0.7rem] text-white/70 opacity-0 transition-opacity duration-200" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">Group Photo</div>
             </div>
+
           </div>
         </div>
-
-        <!-- description -->
         <div class="px-5 sm:px-8 pb-7 pt-5 border-t border-white/[0.07] text-[0.9rem] text-slate-400 leading-relaxed">
           Our tour kicked off with a cultural immersion day in the heart of Manila. We explored <strong class="text-slate-200">Rizal Park</strong>, paying tribute to the national hero José Rizal, and wandered through the historic walled city of <strong class="text-slate-200">Intramuros</strong> — a living testament to Philippine colonial history. This day set the tone for the week: curiosity, discovery, and perspective.
           <div class="flex flex-wrap gap-2 mt-4">
@@ -304,20 +280,27 @@
           </div>
         </div>
         <div class="px-5 sm:px-8 py-6">
-          <div class="text-[0.68rem] tracking-widest uppercase text-slate-600 mb-4">📸 Photo Gallery — Replace placeholders with your images</div>
+          <div class="text-[0.68rem] tracking-widest uppercase text-slate-600 mb-4">📸 Photo Gallery</div>
           <div class="gallery-grid-3">
-            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-dashed border-white/10 aspect-[16/10] flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/[0.03]" onclick="openLightbox(this)">
-              <div class="text-2xl opacity-20">🖼️</div><div class="text-[0.7rem] text-slate-600 tracking-wide text-center px-4">Add photo · Hytec</div>
+
+            <!-- SLOT 2-A · change src="hytec-1.jpg" to your actual filename -->
+            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] cursor-pointer transition-all duration-300" onclick="openLightbox(this)">
+              <img src="hytec-1.jpg" alt="Hytec Power Inc." class="absolute inset-0 w-full h-full object-cover" />
               <div class="img-caption absolute bottom-0 left-0 right-0 px-3 py-2 text-[0.7rem] text-white/70 opacity-0 transition-opacity duration-200" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">Hytec Power Inc.</div>
             </div>
-            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-dashed border-white/10 aspect-[16/10] flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/[0.03]" onclick="openLightbox(this)">
-              <div class="text-2xl opacity-20">🖼️</div><div class="text-[0.7rem] text-slate-600 tracking-wide text-center px-4">Add photo · Hytec facilities</div>
+
+            <!-- SLOT 2-B · change src="hytec-facilities.jpg" to your actual filename -->
+            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] cursor-pointer transition-all duration-300" onclick="openLightbox(this)">
+              <img src="hytec-facilities.jpg" alt="Hytec Facilities" class="absolute inset-0 w-full h-full object-cover" />
               <div class="img-caption absolute bottom-0 left-0 right-0 px-3 py-2 text-[0.7rem] text-white/70 opacity-0 transition-opacity duration-200" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">Hytec Facilities</div>
             </div>
-            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-dashed border-white/10 aspect-[16/10] flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/[0.03]" onclick="openLightbox(this)">
-              <div class="text-2xl opacity-20">🖼️</div><div class="text-[0.7rem] text-slate-600 tracking-wide text-center px-4">Add photo · OpenText</div>
+
+            <!-- SLOT 2-C · change src="opentext.jpg" to your actual filename -->
+            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] cursor-pointer transition-all duration-300" onclick="openLightbox(this)">
+              <img src="opentext.jpg" alt="OpenText Office" class="absolute inset-0 w-full h-full object-cover" />
               <div class="img-caption absolute bottom-0 left-0 right-0 px-3 py-2 text-[0.7rem] text-white/70 opacity-0 transition-opacity duration-200" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">OpenText Office</div>
             </div>
+
           </div>
         </div>
         <div class="px-5 sm:px-8 pb-7 pt-5 border-t border-white/[0.07] text-[0.9rem] text-slate-400 leading-relaxed">
@@ -358,20 +341,27 @@
           </div>
         </div>
         <div class="px-5 sm:px-8 py-6">
-          <div class="text-[0.68rem] tracking-widest uppercase text-slate-600 mb-4">📸 Photo Gallery — Replace placeholders with your images</div>
+          <div class="text-[0.68rem] tracking-widest uppercase text-slate-600 mb-4">📸 Photo Gallery</div>
           <div class="gallery-grid-3">
-            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-dashed border-white/10 aspect-[16/10] flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/[0.03]" onclick="openLightbox(this)">
-              <div class="text-2xl opacity-20">🖼️</div><div class="text-[0.7rem] text-slate-600 tracking-wide text-center px-4">Add photo · MMDA</div>
+
+            <!-- SLOT 3-A · change src="mmda-1.jpg" to your actual filename -->
+            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] cursor-pointer transition-all duration-300" onclick="openLightbox(this)">
+              <img src="mmda-1.jpg" alt="MMDA Visit" class="absolute inset-0 w-full h-full object-cover" />
               <div class="img-caption absolute bottom-0 left-0 right-0 px-3 py-2 text-[0.7rem] text-white/70 opacity-0 transition-opacity duration-200" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">MMDA Visit</div>
             </div>
-            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-dashed border-white/10 aspect-[16/10] flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/[0.03]" onclick="openLightbox(this)">
-              <div class="text-2xl opacity-20">🖼️</div><div class="text-[0.7rem] text-slate-600 tracking-wide text-center px-4">Add photo · MMDA Command Center</div>
+
+            <!-- SLOT 3-B · change src="mmda-command-center.jpg" to your actual filename -->
+            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] cursor-pointer transition-all duration-300" onclick="openLightbox(this)">
+              <img src="mmda-command-center.jpg" alt="MMDA Command Center" class="absolute inset-0 w-full h-full object-cover" />
               <div class="img-caption absolute bottom-0 left-0 right-0 px-3 py-2 text-[0.7rem] text-white/70 opacity-0 transition-opacity duration-200" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">MMDA Command Center</div>
             </div>
-            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-dashed border-white/10 aspect-[16/10] flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/[0.03]" onclick="openLightbox(this)">
-              <div class="text-2xl opacity-20">🖼️</div><div class="text-[0.7rem] text-slate-600 tracking-wide text-center px-4">Add photo · Teleperformance</div>
+
+            <!-- SLOT 3-C · change src="teleperformance.jpg" to your actual filename -->
+            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] cursor-pointer transition-all duration-300" onclick="openLightbox(this)">
+              <img src="teleperformance.jpg" alt="Teleperformance" class="absolute inset-0 w-full h-full object-cover" />
               <div class="img-caption absolute bottom-0 left-0 right-0 px-3 py-2 text-[0.7rem] text-white/70 opacity-0 transition-opacity duration-200" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">Teleperformance</div>
             </div>
+
           </div>
         </div>
         <div class="px-5 sm:px-8 pb-7 pt-5 border-t border-white/[0.07] text-[0.9rem] text-slate-400 leading-relaxed">
@@ -412,20 +402,27 @@
           </div>
         </div>
         <div class="px-5 sm:px-8 py-6">
-          <div class="text-[0.68rem] tracking-widest uppercase text-slate-600 mb-4">📸 Photo Gallery — Replace placeholders with your images</div>
+          <div class="text-[0.68rem] tracking-widest uppercase text-slate-600 mb-4">📸 Photo Gallery</div>
           <div class="gallery-grid-3">
-            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-dashed border-white/10 aspect-[16/10] flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/[0.03]" onclick="openLightbox(this)">
-              <div class="text-2xl opacity-20">🖼️</div><div class="text-[0.7rem] text-slate-600 tracking-wide text-center px-4">Add photo · TopPeg Studio</div>
+
+            <!-- SLOT 4-A · change src="toppeg-studio.jpg" to your actual filename -->
+            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] cursor-pointer transition-all duration-300" onclick="openLightbox(this)">
+              <img src="toppeg-studio.jpg" alt="TopPeg Studio" class="absolute inset-0 w-full h-full object-cover" />
               <div class="img-caption absolute bottom-0 left-0 right-0 px-3 py-2 text-[0.7rem] text-white/70 opacity-0 transition-opacity duration-200" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">TopPeg Studio</div>
             </div>
-            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-dashed border-white/10 aspect-[16/10] flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/[0.03]" onclick="openLightbox(this)">
-              <div class="text-2xl opacity-20">🖼️</div><div class="text-[0.7rem] text-slate-600 tracking-wide text-center px-4">Add photo · Animation work</div>
+
+            <!-- SLOT 4-B · change src="toppeg-animation.jpg" to your actual filename -->
+            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] cursor-pointer transition-all duration-300" onclick="openLightbox(this)">
+              <img src="toppeg-animation.jpg" alt="Animation Demo" class="absolute inset-0 w-full h-full object-cover" />
               <div class="img-caption absolute bottom-0 left-0 right-0 px-3 py-2 text-[0.7rem] text-white/70 opacity-0 transition-opacity duration-200" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">Animation Demo</div>
             </div>
-            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-dashed border-white/10 aspect-[16/10] flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/[0.03]" onclick="openLightbox(this)">
-              <div class="text-2xl opacity-20">🖼️</div><div class="text-[0.7rem] text-slate-600 tracking-wide text-center px-4">Add photo · MicroSourcing</div>
+
+            <!-- SLOT 4-C · change src="microsourcing.jpg" to your actual filename -->
+            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] cursor-pointer transition-all duration-300" onclick="openLightbox(this)">
+              <img src="microsourcing.jpg" alt="MicroSourcing Office" class="absolute inset-0 w-full h-full object-cover" />
               <div class="img-caption absolute bottom-0 left-0 right-0 px-3 py-2 text-[0.7rem] text-white/70 opacity-0 transition-opacity duration-200" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">MicroSourcing Office</div>
             </div>
+
           </div>
         </div>
         <div class="px-5 sm:px-8 pb-7 pt-5 border-t border-white/[0.07] text-[0.9rem] text-slate-400 leading-relaxed">
@@ -462,16 +459,21 @@
           </div>
         </div>
         <div class="px-5 sm:px-8 py-6">
-          <div class="text-[0.68rem] tracking-widest uppercase text-slate-600 mb-4">📸 Photo Gallery — Replace placeholders with your images</div>
+          <div class="text-[0.68rem] tracking-widest uppercase text-slate-600 mb-4">📸 Photo Gallery</div>
           <div class="gallery-grid-2">
-            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-dashed border-white/10 aspect-[16/10] flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/[0.03]" onclick="openLightbox(this)">
-              <div class="text-2xl opacity-20">🖼️</div><div class="text-[0.7rem] text-slate-600 tracking-wide text-center px-4">Add photo for Day 5</div>
+
+            <!-- SLOT 5-A · change src="day5-photo1.jpg" to your actual filename -->
+            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] cursor-pointer transition-all duration-300" onclick="openLightbox(this)">
+              <img src="day5-photo1.jpg" alt="Day 5 Memory" class="absolute inset-0 w-full h-full object-cover" />
               <div class="img-caption absolute bottom-0 left-0 right-0 px-3 py-2 text-[0.7rem] text-white/70 opacity-0 transition-opacity duration-200" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">Day 5 Memory</div>
             </div>
-            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-dashed border-white/10 aspect-[16/10] flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/[0.03]" onclick="openLightbox(this)">
-              <div class="text-2xl opacity-20">🖼️</div><div class="text-[0.7rem] text-slate-600 tracking-wide text-center px-4">Add photo for Day 5</div>
+
+            <!-- SLOT 5-B · change src="day5-photo2.jpg" to your actual filename -->
+            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] cursor-pointer transition-all duration-300" onclick="openLightbox(this)">
+              <img src="day5-photo2.jpg" alt="Day 5 Memory" class="absolute inset-0 w-full h-full object-cover" />
               <div class="img-caption absolute bottom-0 left-0 right-0 px-3 py-2 text-[0.7rem] text-white/70 opacity-0 transition-opacity duration-200" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">Day 5 Memory</div>
             </div>
+
           </div>
         </div>
         <div class="px-5 sm:px-8 pb-7 pt-5 border-t border-white/[0.07] text-[0.9rem] text-slate-400 leading-relaxed italic">
@@ -506,16 +508,21 @@
           </div>
         </div>
         <div class="px-5 sm:px-8 py-6">
-          <div class="text-[0.68rem] tracking-widest uppercase text-slate-600 mb-4">📸 Photo Gallery — Replace placeholders with your images</div>
+          <div class="text-[0.68rem] tracking-widest uppercase text-slate-600 mb-4">📸 Photo Gallery</div>
           <div class="gallery-grid-2">
-            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-dashed border-white/10 aspect-[16/10] flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/[0.03]" onclick="openLightbox(this)">
-              <div class="text-2xl opacity-20">🖼️</div><div class="text-[0.7rem] text-slate-600 tracking-wide text-center px-4">Add photo for Day 6</div>
+
+            <!-- SLOT 6-A · change src="day6-photo1.jpg" to your actual filename -->
+            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] cursor-pointer transition-all duration-300" onclick="openLightbox(this)">
+              <img src="day6-photo1.jpg" alt="Day 6 Memory" class="absolute inset-0 w-full h-full object-cover" />
               <div class="img-caption absolute bottom-0 left-0 right-0 px-3 py-2 text-[0.7rem] text-white/70 opacity-0 transition-opacity duration-200" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">Day 6 Memory</div>
             </div>
-            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-dashed border-white/10 aspect-[16/10] flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/[0.03]" onclick="openLightbox(this)">
-              <div class="text-2xl opacity-20">🖼️</div><div class="text-[0.7rem] text-slate-600 tracking-wide text-center px-4">Add photo for Day 6</div>
+
+            <!-- SLOT 6-B · change src="day6-photo2.jpg" to your actual filename -->
+            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] cursor-pointer transition-all duration-300" onclick="openLightbox(this)">
+              <img src="day6-photo2.jpg" alt="Day 6 Memory" class="absolute inset-0 w-full h-full object-cover" />
               <div class="img-caption absolute bottom-0 left-0 right-0 px-3 py-2 text-[0.7rem] text-white/70 opacity-0 transition-opacity duration-200" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">Day 6 Memory</div>
             </div>
+
           </div>
         </div>
         <div class="px-5 sm:px-8 pb-7 pt-5 border-t border-white/[0.07] text-[0.9rem] text-slate-400 leading-relaxed italic">
@@ -550,16 +557,21 @@
           </div>
         </div>
         <div class="px-5 sm:px-8 py-6">
-          <div class="text-[0.68rem] tracking-widest uppercase text-slate-600 mb-4">📸 Photo Gallery — Replace placeholders with your images</div>
+          <div class="text-[0.68rem] tracking-widest uppercase text-slate-600 mb-4">📸 Photo Gallery</div>
           <div class="gallery-grid-2">
-            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-dashed border-white/10 aspect-[16/10] flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/[0.03]" onclick="openLightbox(this)">
-              <div class="text-2xl opacity-20">🖼️</div><div class="text-[0.7rem] text-slate-600 tracking-wide text-center px-4">Final group photo</div>
+
+            <!-- SLOT 7-A · change src="final-group-photo.jpg" to your actual filename -->
+            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] cursor-pointer transition-all duration-300" onclick="openLightbox(this)">
+              <img src="final-group-photo.jpg" alt="Final Group Photo" class="absolute inset-0 w-full h-full object-cover" />
               <div class="img-caption absolute bottom-0 left-0 right-0 px-3 py-2 text-[0.7rem] text-white/70 opacity-0 transition-opacity duration-200" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">Final Group Photo</div>
             </div>
-            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-dashed border-white/10 aspect-[16/10] flex flex-col items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:border-cyan/30 hover:bg-cyan/[0.03]" onclick="openLightbox(this)">
-              <div class="text-2xl opacity-20">🖼️</div><div class="text-[0.7rem] text-slate-600 tracking-wide text-center px-4">Departure / farewell photo</div>
+
+            <!-- SLOT 7-B · change src="farewell.jpg" to your actual filename -->
+            <div class="img-slot relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 aspect-[16/10] cursor-pointer transition-all duration-300" onclick="openLightbox(this)">
+              <img src="farewell.jpg" alt="Farewell" class="absolute inset-0 w-full h-full object-cover" />
               <div class="img-caption absolute bottom-0 left-0 right-0 px-3 py-2 text-[0.7rem] text-white/70 opacity-0 transition-opacity duration-200" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">Farewell</div>
             </div>
+
           </div>
         </div>
         <div class="px-5 sm:px-8 pb-7 pt-5 border-t border-white/[0.07] text-[0.9rem] text-slate-400 leading-relaxed italic">
